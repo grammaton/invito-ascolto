@@ -1,0 +1,260 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[%10pt,
+			   b4paper,
+			   twoside
+			   ]{book}
+
+%\usepackage[cam,a3,center]{crop}
+
+\usepackage{imakeidx}
+\usepackage[T1]{fontenc}
+
+\usepackage[margin=1.23in,
+		    %pass,
+		    %showframe
+		    ]{geometry}
+
+\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{float} % they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+
+\usepackage{paralist}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{url}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{citecolor=black}
+\hypersetup{linkcolor=black}
+\hypersetup{urlcolor=black}
+\usepackage{cleveref}
+
+\usepackage{microtype} % Improves spacing
+\usepackage{multicol}
+\usepackage{pdfpages}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{matrix}
+\usetikzlibrary{snakes}
+
+\usepackage{color}
+\usepackage{lipsum}
+
+\usepackage{sclang-prettifier}
+
+% \makeindex[title=Indice dei nomi]
+
+\graphicspath{{images/}}
+
+%-------------------------------------------------------------
+%------------------------------------------------ TIPOGRAFIA -
+%-------------------------------------------------------------
+
+\input{../_lib/fonts.tex}
+
+\setlength{\columnsep}{.4in}
+
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+%-------------------------------------------------------------
+%---------------------------------------------------- HEADER -
+%-------------------------------------------------------------
+
+\usepackage{fancyhdr}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+%\fancyhead[CO,CE]{---Draft---}
+\fancyfoot[RO,LE]{\fontsize{18pt}{18pt}\selectfont\thepage} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\pagestyle{plain}
+
+%-------------------------------------------------------------
+%----------------------------------------------------- TITLE -
+%-------------------------------------------------------------
+
+\makeatletter
+%\frameattext{<backgroundcolor>}{linecolor}{<linewidth>}
+\newdimen\extraxsep
+\newdimen\extraysep
+\extraxsep=20mm
+\extraysep=20mm
+\newcommand\frameattext[3]{%
+  \linethickness{#3}%
+  \AddToShipoutPicture*{%
+    \AtTextLowerLeft{%text-boder
+       \put(\LenToUnit{-,5\extraxsep},\LenToUnit{-0.5\extraysep}){\color{#1}%
+             \rule{\dimexpr\textwidth+\extraxsep\relax}{\dimexpr\textheight+\extraysep\relax}}%
+       \put(\LenToUnit{-,5\extraxsep},\LenToUnit{-0.5\extraysep}){\color{#2}%
+       \framebox(\LenToUnit{\dimexpr\textwidth+\extraxsep\relax},%
+                 \LenToUnit{\dimexpr\textheight+\extraysep\relax}){}
+       }
+    }%
+  }%
+}
+%\frameatpage{<backgroundcolor>}{linecolor}{<linewidth>}
+\newcommand\frameatpage[3]{%
+  \linethickness{#3}%
+  \AddToShipoutPicture*{%
+    \AtPageLowerLeft{%page-border
+      \put(0,0){\color{#1}\rule{\paperwidth}{\paperheight}}%
+      \put(\LenToUnit{\@wholewidth},\LenToUnit{\@wholewidth}){%
+       \color{#2}\framebox(\LenToUnit{\dimexpr\paperwidth-2\@wholewidth\relax},%
+                  \LenToUnit{\dimexpr\paperheight-2\@wholewidth\relax}){}%
+      }%
+    }%
+  }%
+}
+
+\makeatother
+
+%-------------------------------------------------------------
+%-------------------------------------------------- DOCUMENT -
+%-------------------------------------------------------------
+
+\begin{document}
+
+\setlength{\columnsep}{.4in}
+
+\frameattext{white}{black}{2pt}
+
+\begin{center}
+	~
+	\vfill
+
+    \fontsize{19}{19}\selectfont{Giuseppe SILVI}
+    	\vspace{.3in}
+		\noindent\makebox[\linewidth]{\rule{.3\paperwidth}{1pt}}
+	\fontsize{51}{51}\selectfont{\emph{l'invito all'ascolto}} \\
+		\vfill %\vspace{1in}
+		~
+		\vfill
+
+    \fontsize{19}{19}\selectfont{COME/01 \\ esecuzione ed interpretazione della \\musica elettroacustica \\ 2016/2017} \\
+
+		\vfill
+	\fontsize{19}{19}\selectfont{draft 002\\ \today}
+
+	\vfill
+	~
+
+\end{center}
+%\maketitle
+
+\thispagestyle{empty}
+
+%\clearpage
+%
+%\thispagestyle{empty}
+%
+%~
+%
+%\clearpage
+%
+%\tableofcontents
+%
+%~\vfill
+%
+%\includegraphics[width=.25\columnwidth]{images/by-nc-sa}\\
+%\emph{A. Sax.} by Giuseppe Silvi is licensed under a Creative Commons \\
+%Attribution-NonCommercial-ShareAlike 4.0 International License.\\
+%Permissions beyond the scope of this license may be available at\\
+%giuseppesilvi.com/asax.%\marginpar{prova}
+%
+%
+\clearpage
+
+%-------------------------------------------------------------
+%-------------------------------------------------- COLOPHON -
+%-------------------------------------------------------------
+
+\input{includes/colophon}
+
+\clearpage
+
+%-------------------------------------------------------------
+%---------------------------------------------------- INDICE -
+%-------------------------------------------------------------
+
+\tableofcontents
+\thispagestyle{empty}
+
+\clearpage
+
+%-------------------------------------------------------------
+%---------------------------------------------------- BIANCA -
+%-------------------------------------------------------------
+
+~
+\thispagestyle{empty}
+
+\clearpage
+
+%-------------------------------------------------------------
+%---------------------------------------------- INTRODUZIONE -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/0001-INTRODUZIONE.tex}
+
+%-------------------------------------------------------------
+%------------------------------- SUONO SEGNO INTERPRETAZIONE -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/0010-SUONO-SEGNO-INTERPRETAZIONE.tex}
+
+%-------------------------------------------------------------
+%------------------------------------ IMAGINARY LANDSCAPE N3 -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1942-CAGE-IMAGINARY-LANDSCAPE-3.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------------- STUDIE II -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1956-STOCKHAUSEN-STUDIE-II.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------- CARTRIDGE MUSIC -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1960-CAGE-CARTRIDGE-MUSIC.tex}
+
+%-------------------------------------------------------------
+%---------------------------------------------------- MANTRA -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1970-STOCKHAUSEN-MANTRA.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------------ WAVES SONG -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1998-LUCIER-WAVES-SONG.tex}
+
+%-------------------------------------------------------------
+%---------------------------------------------- EVER PRESENT -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/2002-LUCIER-EVER-PRESENT.tex}
+
+%-------------------------------------------------------------
+%------------------------------------ AUDIBLE ECOSYSTEMIC 2A -
+%-------------------------------------------------------------
+
+
+\input{includes/capitoli/2003-DISCIPIO-AUDIBLE-ECO2.tex}
+
+\includepdf[scale=2.0, offset= -430 0]{includes/_timeline/cosmologia.pdf}
+\includepdf[scale=2.0, offset= -410 0]{includes/_timeline/cosmologia.pdf}
+
+\end{document}
