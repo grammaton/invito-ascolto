@@ -1,24 +1,29 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[%10pt,
-			   b5paper,
-			   twoside
-			   ]{book}
+\documentclass[
+	%10pt,
+	b5paper,
+	twoside,
+	openright,
+]{book}
 
-%\usepackage[cam,a3,center]{crop}
+%\usepackage[cam,a4,center]{crop}
 
 \usepackage{imakeidx}
 \usepackage[T1]{fontenc}
 
-\usepackage[top=1.23in,
-			bottom=1.23in,
-			left=.707in,
-			right=1.23in
-			%margin=1.23in,
-		    %pass,
-		    %showframe
-		    ]{geometry}
+\usepackage[
+	% top=1.23in,
+	% bottom=1.23in,
+	% left=.707in,
+	% right=.707in,
+	margin=1.123in,
+	% pass,
+	%showframe,
+	bindingoffset=6mm,
+	verbose,
+]{geometry}
 
 \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
@@ -50,23 +55,79 @@
 \usepackage{color}
 \usepackage{lipsum}
 
-\usepackage[framed,numbered]{sclang-prettifier}
+\usepackage[
+	framed,
+	numbered
+]{sclang-prettifier}
 
-% \makeindex[title=Indice dei nomi]
+\makeindex[title=Indice dei nomi]
 
 \graphicspath{{images/}}
+
+%-------------------------------------------------------------
+%----------------------------------------------------- FONTS -
+%-------------------------------------------------------------
+
+\linespread{1.04}
+
+\usepackage{etoolbox}
+
+\usepackage{fontspec,
+			xltxtra,
+			xunicode
+			}
+
+\defaultfontfeatures{Mapping=tex-text}
+
+\setromanfont[
+	Mapping=tex-text
+	]{Alegreya}
+
+\setsansfont[
+	Scale=MatchLowercase,
+	Mapping=tex-text,
+	% LetterSpace=3.0,
+	% Scale=0.707,
+	]{Fira Sans}
+
+\setmonofont[]{Fira Mono}
+
+\newfontfamily{\scaps}{Alegreya SC}
+
+\newfontfamily\quotefont[
+	Scale=MatchLowercase,
+	Mapping=tex-text,
+	LetterSpace=3.0,
+	%Scale=1.123,
+	]{Fira Sans}
+\AtBeginEnvironment{quote}{\quotefont\small}
+
+\usepackage[
+	english,
+	italian,
+	]{babel}
+
+\usepackage{lilyglyphs}
+
+\usepackage[
+	hang,
+	small,
+	labelfont=bf,
+	up,
+	textfont=it,
+	up
+	]{caption}
 
 %-------------------------------------------------------------
 %------------------------------------------------ TIPOGRAFIA -
 %-------------------------------------------------------------
 
-\input{../_lib/fonts.tex}
-
 \setlength{\columnsep}{.4in}
-
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{1}
+
+\usepackage{changepage}
 
 %-------------------------------------------------------------
 %---------------------------------------------------- HEADER -
@@ -122,59 +183,98 @@
 \makeatother
 
 %-------------------------------------------------------------
+%--------------------------------------------- CHAPTER PHOTO -
+%-------------------------------------------------------------
+
+% \makeatletter
+% \newcommand\ChapImage{\includepdf[
+% 	scale=1.05,
+% 	pagecommand={
+% 		\begin{tikzpicture}[
+% 		remember picture,
+% 		overlay
+% 		]
+% 			\node [xshift=2cm,yshift=1cm] at (current page.south west) {\color{white}{\emph{Roberto \textbf{Masotti}}}};
+% 			\end{tikzpicture}}
+% 			]{images/masotti/cage.pdf}
+% 			}
+% \newcommand*\Invcleardoublepage{
+% \clearpage\if@twoside
+%   \ifodd\c@page \null\newpage\if@twocolumn\null%
+%   \newpage\fi\fi\fi
+% }
+% \renewcommand\chapter{%
+%   \if@openright
+%     \ifodd\c@page{\Invcleardoublepage}\else{\clearpage}\fi
+%     {
+%     \pagestyle{empty}
+%     \ChapImage
+%     \clearpage
+%     }
+%   \else
+%     \clearpage
+%   \fi
+%   \thispagestyle{\chapterpagestyle}%
+%   \global\@topnum\z@
+%   \@afterindentfalse
+%   \secdef\@chapter\@schapter
+% }
+% \makeatother
+
+%-------------------------------------------------------------
 %-------------------------------------------------- DOCUMENT -
 %-------------------------------------------------------------
 
 \begin{document}
 
-\setlength{\columnsep}{.4in}
+\AddToShipoutPictureBG*{%
+	\put(-60,-10){
+	\includegraphics[keepaspectratio,scale=.3123]{bg}}
+	}
 
 \frameattext{white}{black}{2pt}
 
 \begin{center}
+
+	~
+
+	\vfill
+
+  \fontsize{19}{19}\selectfont{Giuseppe SILVI}
+
+	\vspace{.23in}
+
+	\noindent\makebox[\linewidth]{\rule{.3\paperwidth}{1pt}}
+
+	\fontsize{51}{51}\selectfont{\emph{l'invito \\ all'ascolto}} \\
+
+	\vfill %\vspace{1in}
 	~
 	\vfill
 
-    \fontsize{19}{19}\selectfont{Giuseppe SILVI}
-    	\vspace{.3in}
-		\noindent\makebox[\linewidth]{\rule{.3\paperwidth}{1pt}}
-	\fontsize{51}{51}\selectfont{\emph{l'invito all'ascolto}} \\
-		\vfill %\vspace{1in}
-		~
-		\vfill
+	\fontsize{19}{19}\selectfont{Antologia per il corso}
 
-    \fontsize{19}{19}\selectfont{COME/01 \\ esecuzione ed interpretazione della \\musica elettroacustica \\ 2016/2017} \\
+	\bigskip
 
-		\vfill
-	\fontsize{19}{19}\selectfont{draft 002\\ \today}
+  \fontsize{19}{19}\selectfont{
+			\emph{COME/01 \\
+			Esecuzione ed Interpretazione della \\
+			Musica elettroacustica \\
+			2016/2019}
+			} \\
 
 	\vfill
+
+	\fontsize{13}{13}\selectfont{draft \emph{\# 003}\\ \today}
+
+	\vfill
+
 	~
 
 \end{center}
-%\maketitle
 
 \thispagestyle{empty}
 
-%\clearpage
-%
-%\thispagestyle{empty}
-%
-%~
-%
-%\clearpage
-%
-%\tableofcontents
-%
-%~\vfill
-%
-%\includegraphics[width=.25\columnwidth]{images/by-nc-sa}\\
-%\emph{A. Sax.} by Giuseppe Silvi is licensed under a Creative Commons \\
-%Attribution-NonCommercial-ShareAlike 4.0 International License.\\
-%Permissions beyond the scope of this license may be available at\\
-%giuseppesilvi.com/asax.%\marginpar{prova}
-%
-%
 \clearpage
 
 %-------------------------------------------------------------
@@ -199,6 +299,7 @@
 %-------------------------------------------------------------
 
 ~
+
 \thispagestyle{empty}
 
 \clearpage
@@ -255,10 +356,23 @@
 %------------------------------------ AUDIBLE ECOSYSTEMIC 2A -
 %-------------------------------------------------------------
 
-
 \input{includes/capitoli/2003-DISCIPIO-AUDIBLE-ECO2.tex}
 
-\includepdf[scale=2.0, offset= -430 0]{includes/_timeline/cosmologia.pdf}
-\includepdf[scale=2.0, offset= -410 0]{includes/_timeline/cosmologia.pdf}
+%-------------------------------------------------------------
+%------------------------------------------------- APPENDICI -
+%-------------------------------------------------------------
+
+%\appendix
+\clearpage
+~
+\clearpage
+
+\appendix
+
+\includepdf[scale=2, offset= -250 0]{includes/_timeline/cosmologia.pdf}
+\includepdf[scale=2, offset= -210 0]{includes/_timeline/cosmologia.pdf}
+
+\clearpage
+\printindex
 
 \end{document}

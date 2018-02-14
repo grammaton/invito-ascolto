@@ -3,17 +3,22 @@
 % !TEX root = ../../2017-GS-COME01-INVITO-ASCOLTO.tex
 
 \clearpage
-
+\thispagestyle{empty}
+~
+\clearpage
 \thispagestyle{empty}
 
-\includepdf[scale=1.05,
-		    pagecommand={
-		    	\begin{tikzpicture}[
-					remember picture,
-					overlay]
-		    	\node [xshift=2cm,yshift=1cm] at (current page.south west) {\color{white}{\emph{Roberto \textbf{Masotti}}}};
-				\end{tikzpicture}}
-		    ]{images/masotti/cage.pdf}
+\includepdf[
+	scale=1.05,
+	pagecommand={
+		\begin{tikzpicture}[
+		remember picture,
+		overlay
+		]
+			\node [xshift=2cm,yshift=1cm] at (current page.south west) {\color{white}{\emph{Roberto \textbf{Masotti}}}};
+			\end{tikzpicture}}
+			]{images/masotti/cage1.pdf}
+
 
 \clearpage
 
@@ -70,7 +75,7 @@ s.record(duration:900, numChannels:0);
 )
 \end{lstlisting}
 
-\clearpage 
+\clearpage
 
 Vinile 3
 
@@ -85,4 +90,3 @@ SynthDef("generator-whine", { arg out=0;
 s.record(duration:900, numChannels:0);
 )
 \end{lstlisting}
-
