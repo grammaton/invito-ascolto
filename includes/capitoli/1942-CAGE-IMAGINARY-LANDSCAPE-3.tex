@@ -49,44 +49,71 @@
 %
 %\bigskip
 
-Vinile 1
+\vfill
 
-\begin{lstlisting}[style=SuperCollider-IDE]
-// Constant Frequency Record
-(
-SynthDef("constant-frequency", { arg out=0;
-    Out.ar(out,
-    SinOsc.ar(1000,0, 0.2))
-}).play;
-s.record(duration:900, numChannels:0);
-)
-\end{lstlisting}
+Nel 1926 l'etichetta discografica \emph{Brunswick} introdusse un nuovo fonografo acustico in grado di riprodurre registrazioni su dischi 78 giri denominato \emph{Brunswick Panatrope}. Nel 1924 Ottorino Respighi compone \emph{I pini di Roma}, poema sinfonico appartenente alla \emph{trilogia romana} insieme a \emph{Le fontane di Roma} e \emph{Feste romane}. Nel finale del terzo tempo si ascolta il canto di un usignolo registrato segnando di fatto la prima integrazione tra suoni reali pre-registrati e suoni acustici, strumentali, reali. In partitura una nota fa riferimento ad una registrazione realizzata su di un fonografo: il Brunswick Panatrope. 
 
-Vinile 2
+Nel 1939 John Cage realizza il primo degli \emph{Imaginary Landscape}, un brano composto con giradischi a velocità variabile, un pianoforte mutato e grande piatto cinese. 
 
-\begin{lstlisting}[style=SuperCollider-IDE]
-// Continuously Variable Frequency Record
-(
-SynthDef("continuously-variable-frequency", { arg out=0;
-    Out.ar(out,
-    SinOsc.ar(LFNoise2.ar(0.5).range(400, 4000), 0, 0.2))
-}).play;
-s.record(duration:900, numChannels:0);
-)
-\end{lstlisting}
+Entrambi i brani, pur condividendo il supporto discografico, segnano a loro modo un differente approccio al suono pre-registrato. In Respighi il disco è un mezzo di introduzione di naturalismo, un complemento figurativo al poema sinfonico. Un approccio funzionale in sostituzione di un più complesso posizionamento dell'uccello in scena. Per John Cage il giradischi è strumento musicale. Il disco, un supporto, il suo contenuto, semplicemente contenuto. Scritto al Cornish College of the Arts di Seattle il primo degli Imaginary landscape andò in scena il 24 marzo 1939 con John Cage, Xenia Cage, Doris Dennison, and Margaret Jansen.
+
+Questo, di fatto, il primo esempio di integrazione musicale ed elettroacustica in una composizione musicale. 
+
+\clearpage
+\thispagestyle{empty}
+
+\includepdf[
+	scale=0.95,
+	pagecommand={
+		\begin{tikzpicture}[
+		remember picture,
+		overlay
+		]
+			\node [xshift=2cm,yshift=1cm] at (current page.south west) {\color{white}{\emph{Roberto \textbf{Masotti}}}};
+			\end{tikzpicture}}
+			]{images/pinidiroma-finale.pdf}
+
 
 \clearpage
 
-Vinile 3
+John Cage compone cinque Imaginary Landscape:
 
-\begin{lstlisting}[style=SuperCollider-IDE]
-// Generator Whine Record
-(
-SynthDef("generator-whine", { arg out=0;
-    Out.ar(out,
-        LFBrownNoise2.ar(2000, 1, 0, 0.25) + SinOsc.ar(LFNoise2.ar(1234).range(9751, 10000),0, 0.012345)
-    )
-}).play;
-s.record(duration:900, numChannels:0);
-)
-\end{lstlisting}
+\begin{compactitem}
+	\item \emph{Imaginary Landscape No. 1} (1939) \\ for two variable-speed turntables, frequency recordings, muted piano, and cymbal
+	\item \emph{Imaginary Landscape No. 2} (March No. 1) (1942) \\ for tin cans, conch shell, ratchet, bass drum, buzzers, water gong, metal wastebasket, lion's roar and amplified coil of wire
+	\item \emph{Imaginary Landscape No. 3} (1942) \\ for tin cans, muted gongs, audio frequency oscillators, variable speed turntables with frequency recordings and recordings of generator whines, amplified coil of wire, amplified marimbula (a Caribbean instrument similar to the African thumb piano), and electric buzzer
+	\item \emph{Imaginary Landscape No. 4 (March No. 2)} (1951) \\ for 24 performers at 12 radios
+	\item \emph{Imaginary Landscape No. 5} (1952) \\ for magnetic tape recording of any 42 phonograph records
+\end{compactitem}
+
+Tutti i brani della suite Imaginary landscape introducono strumenti e suoni elettrificati.
+
+\begin{quote}
+It's not a physical landscape. It's a term reserved for the new technologies. It's a landscape in the future. It's as though you used technology to take you off the ground and go like Alice through the looking glass\footnote{Kostelanetz, Richard. 1986. "John Cage and Richard Kostelanetz: A Conversation about Radio". The Musical Quarterly.72 (2): 216-227.}.
+\end{quote}
+
+
+\lstinputlisting
+[
+  style      = SuperCollider-IDE,
+  basicstyle = \ttfamily\footnotesize,
+  caption    = {Vinile n. 1}
+]{includes/code/vinile1.scd}
+
+\lstinputlisting
+[
+  style      = SuperCollider-IDE,
+  basicstyle = \ttfamily\footnotesize,
+  caption    = {Vinile n. 2}
+]{includes/code/vinile2.scd}
+
+\lstinputlisting
+[
+  style      = SuperCollider-IDE,
+  basicstyle = \ttfamily\footnotesize,
+  caption    = {Vinile n. 3}
+]{includes/code/vinile3.scd}
+
+\clearpage
+
+~

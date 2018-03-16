@@ -8,7 +8,7 @@
 	openright,
 ]{book}
 
-%\usepackage[cam,a4,center]{crop}
+\usepackage[cam,a4,center]{crop}
 
 \usepackage{imakeidx}
 \usepackage[T1]{fontenc}
@@ -63,6 +63,22 @@
 \makeindex[title=Indice dei nomi]
 
 \graphicspath{{images/}}
+
+\usepackage[
+	autostyle,
+	italian=guillemets,
+	% altre opzioni
+	]{csquotes}
+
+\usepackage[
+	% altre opzioni,
+	style=authoryear,
+	%backend=biber
+]{biblatex}
+
+\addbibresource{nono-luigi.bib}
+\addbibresource{storia-musica.bib}
+
 
 %-------------------------------------------------------------
 %----------------------------------------------------- FONTS -
@@ -221,6 +237,8 @@
 % }
 % \makeatother
 
+\newcommand{\link}[2]{\href{#1}{{#2}$ \blacktriangleright \blacktriangleright \blacktriangleright $}}
+
 %-------------------------------------------------------------
 %-------------------------------------------------- DOCUMENT -
 %-------------------------------------------------------------
@@ -341,6 +359,17 @@
 \input{includes/capitoli/1970-STOCKHAUSEN-MANTRA.tex}
 
 %-------------------------------------------------------------
+%------------------------------------------ OMAGGIO A KURTAG -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1983-NONO-OMAGGIO-KURTAG.tex}
+
+%-------------------------------------------------------------
+%-------------------------------- DIALOGUE DE L'OMBRE DOUBLE -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1985-BOULEZ-DIALOGUE.tex}
+%-------------------------------------------------------------
 %------------------------------------------------ WAVES SONG -
 %-------------------------------------------------------------
 
@@ -373,6 +402,11 @@
 \includepdf[scale=2, offset= -210 0]{includes/_timeline/cosmologia.pdf}
 
 \clearpage
+
 \printindex
+
+\clearpage
+
+\printbibliography
 
 \end{document}
