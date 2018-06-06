@@ -2,7 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 
 \documentclass[
-	%10pt,
+	12pt,
 	b5paper,
 	twoside,
 	openright,
@@ -18,18 +18,19 @@
 	% bottom=1.23in,
 	% left=.707in,
 	% right=.707in,
-	margin=1.123in,
+	margin=0.707in,
 	% pass,
 	%showframe,
 	bindingoffset=6mm,
 	verbose,
 ]{geometry}
 
-\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage[parfill]{parskip}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{wrapfig}
-\usepackage{float} % they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{float}
+\usepackage{mdframed}
 
 \usepackage{paralist}
 \usepackage{array}
@@ -69,6 +70,13 @@
 	italian=guillemets,
 	% altre opzioni
 	]{csquotes}
+
+	\newmdenv[
+	  topline=false,
+	  bottomline=false,
+	  skipabove=\topsep,
+	  skipbelow=\topsep
+	]{siderules}
 
 \usepackage[
 	% altre opzioni,
@@ -347,16 +355,40 @@
 \input{includes/capitoli/1956-STOCKHAUSEN-STUDIE-II.tex}
 
 %-------------------------------------------------------------
+%------------------------------------------------- STUDIE II -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1958-CAGE-FONTANA-MIX.tex}
+
+%-------------------------------------------------------------
 %------------------------------------------- CARTRIDGE MUSIC -
 %-------------------------------------------------------------
 
 \input{includes/capitoli/1960-CAGE-CARTRIDGE-MUSIC.tex}
 
 %-------------------------------------------------------------
+%------------------------------------------- CARTRIDGE MUSIC -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1963-GUACCERO-SINFONIA1.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------- CARTRIDGE MUSIC -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1969-LUCIER-SITTING.tex}
+
+%-------------------------------------------------------------
 %---------------------------------------------------- MANTRA -
 %-------------------------------------------------------------
 
 \input{includes/capitoli/1970-STOCKHAUSEN-MANTRA.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------ OMAGGIO A KURTAG -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1976-GINC-OMAGGIO-SCELSI.tex}
 
 %-------------------------------------------------------------
 %------------------------------------------ OMAGGIO A KURTAG -
@@ -369,11 +401,36 @@
 %-------------------------------------------------------------
 
 \input{includes/capitoli/1985-BOULEZ-DIALOGUE.tex}
+
+%-------------------------------------------------------------
+%-------------------------------- POST-PRAE LUDIUM PER DONAU -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1987-NONO-POST-PRAE-LUDIUM-PER-DONAU.tex}
+
+%-------------------------------------------------------------
+%------------------------------------------------ WAVES SONG -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1990-LUCIER-NOTHING-IS-REAL.tex}
+
+%-------------------------------------------------------------
+%----------------------------------------- FORMA DEL RESPIRO -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1993-LUPONE-FORMA-DEL-RESPIRO.tex}
+
 %-------------------------------------------------------------
 %------------------------------------------------ WAVES SONG -
 %-------------------------------------------------------------
 
 \input{includes/capitoli/1998-LUCIER-WAVES-SONG.tex}
+
+%-------------------------------------------------------------
+%-------------------------------------------- CANTO DI MADRE -
+%-------------------------------------------------------------
+
+\input{includes/capitoli/1998-LUPONE-CANTO-DI-MADRE.tex}
 
 %-------------------------------------------------------------
 %---------------------------------------------- EVER PRESENT -
