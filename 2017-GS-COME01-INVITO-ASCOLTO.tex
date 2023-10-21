@@ -2,8 +2,8 @@
 %!TEX encoding = UTF-8 Unicode
 
 \documentclass[
-	12pt,
-	b5paper,
+	%12pt,
+	%b5paper,
 	twoside,
 	openright,
 ]{book}
@@ -14,15 +14,18 @@
 \usepackage[T1]{fontenc}
 
 \usepackage[
-	% top=1.23in,
-	% bottom=1.23in,
-	% left=.707in,
-	% right=.707in,
-	margin=0.707in,
+  paperheight=26cm,
+	paperwidth=13cm,
+	top=1.23in,
+	bottom=1.23in,
+	left=1cm,
+	right=1cm,
+	%margin=0.707in,
 	% pass,
-	%showframe,
+	showframe,
 	bindingoffset=6mm,
 	verbose,
+	heightrounded
 ]{geometry}
 
 \usepackage[parfill]{parskip}
@@ -71,11 +74,11 @@
 	% altre opzioni
 	]{csquotes}
 
-	\newmdenv[
-	  topline=false,
-	  bottomline=false,
-	  skipabove=\topsep,
-	  skipbelow=\topsep
+\newmdenv[
+	topline=false,
+	bottomline=false,
+	skipabove=\topsep,
+	skipbelow=\topsep
 	]{siderules}
 
 \usepackage[
@@ -167,44 +170,7 @@
 \renewcommand{\footrulewidth}{0pt}}
 \pagestyle{plain}
 
-%-------------------------------------------------------------
-%----------------------------------------------------- TITLE -
-%-------------------------------------------------------------
-
-\makeatletter
-%\frameattext{<backgroundcolor>}{linecolor}{<linewidth>}
-\newdimen\extraxsep
-\newdimen\extraysep
-\extraxsep=20mm
-\extraysep=20mm
-\newcommand\frameattext[3]{%
-  \linethickness{#3}%
-  \AddToShipoutPicture*{%
-    \AtTextLowerLeft{%text-boder
-       \put(\LenToUnit{-,5\extraxsep},\LenToUnit{-0.5\extraysep}){\color{#1}%
-             \rule{\dimexpr\textwidth+\extraxsep\relax}{\dimexpr\textheight+\extraysep\relax}}%
-       \put(\LenToUnit{-,5\extraxsep},\LenToUnit{-0.5\extraysep}){\color{#2}%
-       \framebox(\LenToUnit{\dimexpr\textwidth+\extraxsep\relax},%
-                 \LenToUnit{\dimexpr\textheight+\extraysep\relax}){}
-       }
-    }%
-  }%
-}
-%\frameatpage{<backgroundcolor>}{linecolor}{<linewidth>}
-\newcommand\frameatpage[3]{%
-  \linethickness{#3}%
-  \AddToShipoutPicture*{%
-    \AtPageLowerLeft{%page-border
-      \put(0,0){\color{#1}\rule{\paperwidth}{\paperheight}}%
-      \put(\LenToUnit{\@wholewidth},\LenToUnit{\@wholewidth}){%
-       \color{#2}\framebox(\LenToUnit{\dimexpr\paperwidth-2\@wholewidth\relax},%
-                  \LenToUnit{\dimexpr\paperheight-2\@wholewidth\relax}){}%
-      }%
-    }%
-  }%
-}
-
-\makeatother
+\input{includes/copertinabg}
 
 %-------------------------------------------------------------
 %--------------------------------------------- CHAPTER PHOTO -
@@ -245,7 +211,19 @@
 % }
 % \makeatother
 
-\newcommand{\link}[2]{\href{#1}{{#2}$ \blacktriangleright \blacktriangleright \blacktriangleright $}}
+\newcommand{\link}[2]{\href{#1}{{#2}$%
+            \blacktriangleright
+						\blacktriangleright
+						\blacktriangleright%
+						$}}
+
+\newcommand{\bianca}{$%
+            ~%
+            \thispagestyle{empty}%
+            \clearpage%
+						$}
+
+\newcommand{\entry}[4]{\textbf{#1}\markboth{#1}{#1}\ {(#2)}\ \textit{#3}\ $\bullet$\ {#4}} % Defines the command to print each word on the page, \markboth{}{} prints the first word on the page in the top left header and the last word in the top right
 
 %-------------------------------------------------------------
 %-------------------------------------------------- DOCUMENT -
@@ -253,63 +231,9 @@
 
 \begin{document}
 
-\AddToShipoutPictureBG*{%
-	\put(-60,-10){
-	\includegraphics[keepaspectratio,scale=.3123]{bg}}
-	}
-
-\frameattext{white}{black}{2pt}
-
-\begin{center}
-
-	~
-
-	\vfill
-
-  \fontsize{19}{19}\selectfont{Giuseppe SILVI}
-
-	\vspace{.23in}
-
-	\noindent\makebox[\linewidth]{\rule{.3\paperwidth}{1pt}}
-
-	\fontsize{51}{51}\selectfont{\emph{l'invito \\ all'ascolto}} \\
-
-	\vfill %\vspace{1in}
-	~
-	\vfill
-
-	\fontsize{19}{19}\selectfont{Antologia per il corso}
-
-	\bigskip
-
-  \fontsize{19}{19}\selectfont{
-			\emph{COME/01 \\
-			Esecuzione ed Interpretazione della \\
-			Musica elettroacustica \\
-			2016/2019}
-			} \\
-
-	\vfill
-
-	\fontsize{13}{13}\selectfont{draft \emph{\# 003}\\ \today}
-
-	\vfill
-
-	~
-
-\end{center}
-
-\thispagestyle{empty}
-
-\clearpage
-
-%-------------------------------------------------------------
-%-------------------------------------------------- COLOPHON -
-%-------------------------------------------------------------
+\input{includes/copertina}
 
 \input{includes/colophon}
-
-\clearpage
 
 %-------------------------------------------------------------
 %---------------------------------------------------- INDICE -
@@ -318,144 +242,52 @@
 \tableofcontents
 \thispagestyle{empty}
 
-\clearpage
+\bianca
+\input{includes/capitoli/0002-PREMESSA.tex}
 
-%-------------------------------------------------------------
-%---------------------------------------------------- BIANCA -
-%-------------------------------------------------------------
-
-~
-
-\thispagestyle{empty}
-
-\clearpage
-
-%-------------------------------------------------------------
-%---------------------------------------------- INTRODUZIONE -
-%-------------------------------------------------------------
-
-\input{includes/capitoli/0001-INTRODUZIONE.tex}
-
-%-------------------------------------------------------------
-%------------------------------- SUONO SEGNO INTERPRETAZIONE -
-%-------------------------------------------------------------
+\input{includes/capitoli/0002-INTRODUZIONE.tex}
 
 \input{includes/capitoli/0010-SUONO-SEGNO-INTERPRETAZIONE.tex}
 
-%-------------------------------------------------------------
-%------------------------------------ IMAGINARY LANDSCAPE N3 -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1942-CAGE-IMAGINARY-LANDSCAPE-3.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------------- STUDIE II -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1956-STOCKHAUSEN-STUDIE-II.tex}
 
-%-------------------------------------------------------------
-%------------------------------------------------- STUDIE II -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1958-CAGE-FONTANA-MIX.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------- CARTRIDGE MUSIC -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1960-CAGE-CARTRIDGE-MUSIC.tex}
 
-%-------------------------------------------------------------
-%------------------------------------------- CARTRIDGE MUSIC -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1963-GUACCERO-SINFONIA1.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------- CARTRIDGE MUSIC -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1969-LUCIER-SITTING.tex}
 
-%-------------------------------------------------------------
-%---------------------------------------------------- MANTRA -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1970-STOCKHAUSEN-MANTRA.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------ OMAGGIO A KURTAG -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1976-GINC-OMAGGIO-SCELSI.tex}
 
-%-------------------------------------------------------------
-%------------------------------------------ OMAGGIO A KURTAG -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1983-NONO-OMAGGIO-KURTAG.tex}
-
-%-------------------------------------------------------------
-%-------------------------------- DIALOGUE DE L'OMBRE DOUBLE -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1985-BOULEZ-DIALOGUE.tex}
 
-%-------------------------------------------------------------
-%-------------------------------- POST-PRAE LUDIUM PER DONAU -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1987-NONO-POST-PRAE-LUDIUM-PER-DONAU.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------------ WAVES SONG -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1990-LUCIER-NOTHING-IS-REAL.tex}
 
-%-------------------------------------------------------------
-%----------------------------------------- FORMA DEL RESPIRO -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1993-LUPONE-FORMA-DEL-RESPIRO.tex}
-
-%-------------------------------------------------------------
-%------------------------------------------------ WAVES SONG -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/1998-LUCIER-WAVES-SONG.tex}
 
-%-------------------------------------------------------------
-%-------------------------------------------- CANTO DI MADRE -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/1998-LUPONE-CANTO-DI-MADRE.tex}
-
-%-------------------------------------------------------------
-%---------------------------------------------- EVER PRESENT -
-%-------------------------------------------------------------
 
 \input{includes/capitoli/2002-LUCIER-EVER-PRESENT.tex}
 
-%-------------------------------------------------------------
-%------------------------------------ AUDIBLE ECOSYSTEMIC 2A -
-%-------------------------------------------------------------
-
 \input{includes/capitoli/2003-DISCIPIO-AUDIBLE-ECO2.tex}
 
-%-------------------------------------------------------------
-%------------------------------------------------- APPENDICI -
-%-------------------------------------------------------------
-
-\input{includes/appendici/A001-DALO-ECOUTE.tex}
-
-%\appendix
-\clearpage
-~
-\clearpage
+%\input{includes/appendici/A001-DALO-ECOUTE.tex}
 
 \appendix
+
+\input{includes/appendici/A001-LESSICO}
 
 \includepdf[scale=2, offset= -250 0]{includes/_timeline/cosmologia.pdf}
 \includepdf[scale=2, offset= -210 0]{includes/_timeline/cosmologia.pdf}
